@@ -3,13 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clearwave Landing Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Clearwave - Your workflow, finally clear.</title>
+    <style>
+        /* Base Setup & Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #EAF4F4; /* Pale green-blue tint */
+            color: #0B3C37; /* Deep corporate teal */
+        }
+
+        /* Container to keep layout aligned and centered */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0B3C37;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: #527773;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #0B3C37;
+        }
+
+        .right-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-login {
+            font-size: 14px;
+            color: #527773;
+            text-decoration: none;
+        }
+
+        .btn-header-trial {
+            background-color: #0B3C37;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        /* Hero Grid Layout */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        /* Switches to two columns on desktops */
+        @media (min-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Left Content Styling */
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(209, 234, 228, 0.6);
+            border: 1px solid rgba(17, 102, 90, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #11665A;
+            border-radius: 50%;
+        }
+
+        .hero-left h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero-left h1 span {
+            font-family: "Georgia", serif;
+            font-style: italic;
+            font-weight: 500;
+            color: #11665A;
+            display: block;
+        }
+
+        .hero-text {
+            color: #527773;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 440px;
+        }
+
+        .button-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background-color: #0B3C37;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-secondary {
+            color: #0B3C37;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .security-badges {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: #527773;
+            border-top: 1px solid #D1EAE4;
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+
+        /* Right Dashboard Mockup Card */
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .dashboard-window {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid white;
+            border-radius: 16px;
+            padding: 24px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(11, 60, 55, 0.07);
+            position: relative;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .window-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .window-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .window-header h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #527773;
+        }
+
+        .stat-badge {
+            background-color: #0B3C37;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            text-align: right;
+        }
+
+        .badge-number {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .badge-label {
+            font-size: 9px;
+            color: #D1EAE4;
+        }
+
+        /* Custom Bar Chart */
+        .bar-chart {
+            height: 100px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            border-bottom: 1px solid #EAF4F4;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .chart-bar {
+            width: 100%;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            background-color: rgba(234, 244, 244, 0.8);
+        }
+
+        .chart-bar.dark-bar {
+            background-color: #11665A;
+        }
+
+        .chart-bar.selected-bar {
+            background-color: #11665A;
+            position: relative;
+        }
+
+        .cursor-pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #11665A;
+        }
+
+        /* Bottom Row Stats inside Card */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .small-stat-box {
+            background-color: white;
+            border: 1px solid #EAF4F4;
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .small-stat-box h4 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .small-stat-box p {
+            font-size: 10px;
+            color: #527773;
+        }
+
+        /* Floating Toast Notification Widget */
+        .floating-toast {
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            background-color: white;
+            border: 1px solid #EAF4F4;
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .toast-icon {
+            background-color: #D1EAE4;
+            color: #11665A;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .toast-text h5 {
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .toast-text p {
+            font-size: 9px;
+            color: #527773;
+        }
+
+        /* Footer Logobar */
+        .logos-footer {
+            border-top: 1px solid rgba(209, 234, 228, 0.5);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer-heading {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: rgba(82, 119, 115, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .brand-logos-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(82, 119, 115, 0.6);
+        }
+    </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">clearwave</div>
+    <!-- Header Block -->
+    <header class="container main-header">
+        <a href="#" class="logo">clearwave</a>
         <nav class="nav-links">
             <a href="#">App</a>
             <a href="#">Features</a>
@@ -17,61 +376,104 @@
             <a href="#">Reviews</a>
             <a href="#">FAQ</a>
         </nav>
-        <div class="nav-buttons">
-            <a href="#" class="btn-signin">Sign in</a>
-            <a href="#" class="btn-trial-nav">Start Free Trial</a>
+        <div class="right-nav">
+            <a href="#" class="btn-login">Sign in</a>
+            <a href="#" class="btn-header-trial">Start Free Trial</a>
         </div>
     </header>
 
-    <main class="hero-container">
+    <!-- Hero Framework -->
+    <main class="container hero-section">
         
-        <section class="hero-left">
-            <div class="badge">⭐ Rated #1 Productivity SaaS of 2024</div>
+        <!-- Left Text Copy -->
+        <div class="hero-left">
+            <div class="rating-badge">
+                <span class="badge-dot"></span>
+                Rated #1 Productivity SaaS of 2024
+            </div>
             
-            <h1>Your workflow, <br><span class="italic-text">finally clear.</span></h1>
+            <h1>Your workflow, <span>finally clear.</span></h1>
             
-            <p>Clearwave unifies your team's projects, data, and communication into one calm, focused surface. Less noise, more done.</p>
+            <p class="hero-text">
+                Clearwave unifies your team's projects, data, and communication into one calm, focused surface. Less noise, more done.
+            </p>
             
-            <div class="cta-group">
-                <a href="#" class="btn-primary">Start Free — No Card &rarr;</a>
+            <div class="button-row">
+                <a href="#" class="btn-primary">Start Free — No Card ➔</a>
                 <a href="#" class="btn-secondary">▶ See it in action</a>
             </div>
-
-            <div class="trust-badges">
+            
+            <div class="security-badges">
                 <span>🛡️ SOC 2 Certified</span>
                 <span>⚡ 99.9% Uptime SLA</span>
-                <span>👥 50k+ Teams</span>
+                <span>👥 50K+ Teams</span>
             </div>
-        </section>
+        </div>
 
-        <section class="hero-right">
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <span class="dots">🔴 🟡 🟢</span>
-                    <h3>Team Performance</h3>
-                    <span class="growth-tag">↑ 34% <small>Output this week</small></span>
+        <!-- Right Visual Window Components -->
+        <div class="hero-right">
+            <div class="dashboard-window">
+                
+                <div class="window-dots">
+                    <span style="background-color: #f87171;"></span>
+                    <span style="background-color: #facc15;"></span>
+                    <span style="background-color: #4ade80;"></span>
                 </div>
                 
-                <div class="chart-container">
-                    <div class="bar" style="height: 100px;"></div>
-                    <div class="bar" style="height: 130px;"></div>
-                    <div class="bar" style="height: 150px;"></div>
+                <div class="window-header">
+                    <h3>Team Performance</h3>
+                    <div class="stat-badge">
+                        <div class="badge-number">↑ 34%</div>
+                        <div class="badge-label">Output this week</div>
+                    </div>
                 </div>
 
-                <div class="metrics-row">
-                    <div class="metric"><strong>94%</strong><p>Task Rate</p></div>
-                    <div class="metric"><strong>2.4k</strong><p>Active Users</p></div>
-                    <div class="metric"><strong>18h</strong><p>Time Saved</p></div>
+                <!-- Custom Bar Graph Block Layout -->
+                <div class="bar-chart">
+                    <div class="chart-bar" style="height: 35%;"></div>
+                    <div class="chart-bar" style="height: 55%;"></div>
+                    <div class="chart-bar selected-bar" style="height: 75%;">
+                        <span class="cursor-pointer">🖰</span>
+                    </div>
+                    <div class="chart-bar dark-bar" style="height: 95%;"></div>
+                    <div class="chart-bar dark-bar" style="height: 90%;"></div>
                 </div>
+
+                <!-- Card Metrics Row -->
+                <div class="stats-grid">
+                    <div class="small-stat-box">
+                        <h4>94%</h4>
+                        <p>Task Rate</p>
+                    </div>
+                    <div class="small-stat-box">
+                        <h4>2.4k</h4>
+                        <p>Active Users</p>
+                    </div>
+                    <div class="small-stat-box">
+                        <h4>18h</h4>
+                        <p>Saved / wk</p>
+                    </div>
+                </div>
+
+                <!-- Floating Integration Element -->
+                <div class="floating-toast">
+                    <div class="toast-icon">✦</div>
+                    <div class="toast-text">
+                        <h5>New integration</h5>
+                        <p>Slack connected</p>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="footer-companies">
-        <p class="footer-title">TRUSTED BY FORWARD-THINKING TEAMS AT</p>
-        <div class="company-logos">
-            <span>❖ Nexaflow</span>
-            <span>🌐 Meridian</span>
+    <!-- Bottom Logo Banner Section -->
+    <footer class="container logos-footer">
+        <div class="footer-heading">Trusted by forward-thinking teams at</div>
+        <div class="brand-logos-row">
+            <span>⚄ Nexaflow</span>
+            <span>🕒 Meridian</span>
             <span>▲ Vanta Labs</span>
             <span>■ Pulsar HQ</span>
             <span>👤 Arclight</span>
