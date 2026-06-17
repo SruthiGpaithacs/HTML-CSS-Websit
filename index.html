@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clearwave - Your workflow, finally clear.</title>
-    <style>
-        /* Base Setup & Reset */
-        * {
+    <style> {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -14,18 +12,17 @@
 
         body {
             font-family: "Segoe UI", Arial, sans-serif;
-            background-color: #EAF4F4; /* Pale green-blue tint */
-            color: #0B3C37; /* Deep corporate teal */
+            background-color: #EAF4F4;
+            color: #0B3C37; 
         }
 
-        /* Container to keep layout aligned and centered */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header Navigation */
+       
         .main-header {
             display: flex;
             justify-content: space-between;
@@ -78,7 +75,7 @@
             text-decoration: none;
         }
 
-        /* Hero Grid Layout */
+     
         .hero-section {
             display: grid;
             grid-template-columns: 1fr;
@@ -87,14 +84,12 @@
             padding: 60px 0;
         }
 
-        /* Switches to two columns on desktops */
         @media (min-width: 768px) {
             .hero-section {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
-        /* Left Content Styling */
         .hero-left {
             display: flex;
             flex-direction: column;
@@ -174,8 +169,6 @@
             padding-top: 20px;
             margin-top: 10px;
         }
-
-        /* Right Dashboard Mockup Card */
         .hero-right {
             display: flex;
             justify-content: center;
@@ -237,7 +230,6 @@
             color: #D1EAE4;
         }
 
-        /* Custom Bar Chart */
         .bar-chart {
             height: 100px;
             display: flex;
@@ -273,7 +265,6 @@
             color: #11665A;
         }
 
-        /* Bottom Row Stats inside Card */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -298,7 +289,6 @@
             color: #527773;
         }
 
-        /* Floating Toast Notification Widget */
         .floating-toast {
             position: absolute;
             bottom: -15px;
@@ -335,7 +325,6 @@
             color: #527773;
         }
 
-        /* Footer Logobar */
         .logos-footer {
             border-top: 1px solid rgba(209, 234, 228, 0.5);
             padding: 40px 0;
