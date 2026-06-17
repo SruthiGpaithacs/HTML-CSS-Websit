@@ -1,467 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clearwave - Built for Clarity</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clearwave — Premium Feature Interface</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-canvas: #f0f6f4;       
+      --text-main: #132f2b;       
+      --text-muted: #526b67;      
+      --brand-teal: #0d8a72;
+      --border-light: #e3ece9;
+      
+      --card-shadow: 0 30px 60px rgba(19, 47, 43, 0.04), 0 1px 2px rgba(0, 0, 0, 0.01);
+      
+      --clr-success: #0d7343; --bg-success: #e1f7ec;
+      --clr-info: #0d47a1;    --bg-info: #e3f2fd;
+      --clr-warning: #e65100; --bg-warning: #fff3e0;
+      --clr-neutral: #4e342e; --bg-neutral: #efebe9;
+    }
+
+     { box-sizing: border-box; margin: 0; padding: 0; }
     
-    <style>
-        :root {
-            --bg-color: #f1f7f5;
-            --text-main: #111a16;
-            --text-muted: #52635a;
-            --accent-green: #115335;
-            --accent-light-green: #e1ede8;
-            --card-bg: #ffffff;
-            --border-radius: 12px;
-            --font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 10rem 2rem;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    .wrapper {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .hero-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 9rem auto;
+    }
 
-        body {
-            font-family: var(--font-family);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 80px 20px;
-        }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--brand-teal);
+      border: 1px solid #cbdcd7;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+    .badge-pill::before {
+      content: "•";
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--brand-teal);
+    }
 
-        /* --- Header Section --- */
-        .header {
-            text-align: center;
-            margin-bottom: 100px;
-        }
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+    h1 span {
+      display: block;
+    }
 
-        .badge {
-            background-color: var(--accent-light-green);
-            color: var(--accent-green);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 6px 16px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+    h1 em {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--brand-teal);
+      text-transform: lowercase;
+      padding-right: 2px;
+    }
 
-        .header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-        }
+    .hero-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-weight: 500;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10rem;
+    }
 
-        .header h1 span {
-            font-style: italic;
-            font-weight: 400;
-            color: var(--accent-green);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
+    .row {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 7rem;
+    }
 
-        .header p {
-            color: var(--text-muted);
-            max-width: 500px;
-            margin: 0 auto;
-            font-size: 1.05rem;
-        }
+    .row:nth-child(even) .col-text { order: 2; }
 
-        /* --- Feature Section Layout --- */
-        .feature-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 80px;
-            margin-bottom: 120px;
-        }
+    .col-text { max-width: 460px; }
 
-        .feature-row.reverse {
-            flex-direction: row-reverse;
-        }
+    .meta-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--brand-teal);
+      display: block;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
 
-        .feature-text {
-            flex: 1;
-            max-width: 480px;
-        }
+    h2 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+      line-height: 1.25;
+    }
 
-        .feature-tag {
-            color: var(--accent-green);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 12px;
-            display: block;
-        }
+    .col-text p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
 
-        .feature-text h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
+    .checklist { list-style: none; }
+    .checklist li {
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.9rem;
+    }
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--brand-teal);
+      font-weight: 700;
+    }
+    .col-visual {
+      display: flex;
+      justify-content: center;
+    }
 
-        .feature-text p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            font-size: 1rem;
-        }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid #e1ebe8; 
+    }
 
-        .feature-list {
-            list-style: none;
-        }
+    .split-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
 
-        .feature-list li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+    .metric-box {
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: #fafcfb;
+    }
 
-        /* Custom Checkmark svg */
-        .feature-list li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 4px;
-            width: 16px;
-            height: 16px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23115335'%3E%3Cpath fill-rule='evenodd' d='M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z' clip-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
+    .metric-box label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
 
-        .feature-visual {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
+    .metric-box .num {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-        /* --- Dashboard/Card Mockups CSS --- */
-        .mockup-canvas {
-            background-color: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            width: 100%;
-            max-width: 480px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
-        }
+    .indicator-bar {
+      width: 100%;
+      height: 2px;
+      background: #e6ecea;
+      margin-top: 10px;
+      border-radius: 2px;
+      position: relative;
+    }
+    .indicator-bar::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; height: 100%;
+      background: var(--brand-teal);
+      border-radius: 2px;
+    }
+    .w-70::after { width: 70%; }
+    .w-45::after { width: 45%; }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
+    .list-caption {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-        .card {
-            background: var(--card-bg);
-            padding: 16px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
-        }
+    .list-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      background: #ffffff;
+    }
+    .list-row:last-child { margin-bottom: 0; }
 
-        .card-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
+    .pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .pill.done    { color: var(--clr-success); background: var(--bg-success); }
+    .pill.active  { color: var(--clr-info);    background: var(--bg-info); }
+    .pill.queued  { color: var(--clr-warning); background: var(--bg-warning); }
+    .pill.paused  { color: var(--clr-neutral); background: var(--bg-neutral); }
 
-        .card-value {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
+    .team-avatars { display: flex; gap: 6px; margin-top: 4px; }
+    .user-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 2px solid #fff; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700; color: #fff;
+    }
+    .performance-footer {
+      border-top: 1px solid #cbdcd7;
+      padding-top: 2rem;
+      margin-top: 9rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+    }
 
-        .card-progress {
-            height: 4px;
-            background-color: var(--accent-light-green);
-            border-radius: 2px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
+    .stat-card { 
+      position: relative; 
+      border-top: 1.5px solid var(--text-main);
+      padding-top: 1.5rem;
+    }
 
-        .card-progress .fill {
-            height: 100%;
-            background-color: var(--accent-green);
-            width: 70%;
-        }
+    .stat-card h3 {
+      font-size: 2.5rem; 
+      font-weight: 700;
+      letter-spacing: -0.03em; 
+      margin-bottom: 0.4rem;
+    }
 
-        .list-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 16px;
-        }
+    .stat-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+    .stat-card p { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; 
+}
+    @media (max-width: 960px) {
+      body { padding: 6rem 1.5rem; }
+      .row { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+      .row:nth-child(even) .col-text { order: unset; }
+      .col-text { max-width: 100%; }
+      .checklist { display: inline-block; text-align: left; }
+      .performance-footer { grid-template-columns: repeat(2, 1fr); gap: 3rem; 
+}
+    }
 
-        .list-card-title {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .list-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 12px;
-            background-color: #f8fbf9;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        .list-item:last-child { margin-bottom: 0; }
-
-        .status-tag {
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        .status-tag.done { background-color: #e2f7ed; color: #117343; }
-        .status-tag.active { background-color: #e3f2fd; color: #0d47a1; }
-        .status-tag.paused { background-color: #f5f5f5; color: #616161; }
-        .status-tag.open { background-color: #fff3e0; color: #e65100; }
-
-        /* --- Stats Section --- */
-        .stats-section {
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding-top: 60px;
-            margin-top: 80px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-        }
-
-        .stat-item {
-            position: relative;
-        }
-
-        .stat-line {
-            width: 24px;
-            height: 2px;
-            background-color: var(--accent-green);
-            margin-bottom: 16px;
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .stat-sub {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* --- Responsive Queries --- */
-        @media (max-width: 768px) {
-            .feature-row, .feature-row.reverse {
-                flex-direction: column;
-                gap: 40px;
-                margin-bottom: 80px;
-            }
-            .stats-section {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            .header h1 {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+    @media (max-width: 540px) {
+      h1 { font-size: 2.4rem; }
+      .performance-footer 
+	{ 
+	grid-template-columns: 1fr;
+	 }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+<div class="wrapper">
 
-    <header class="header">
-        <span class="badge">Platform Features</span>
-        <h1>Built for <span>clarity</span><br>at every scale</h1>
-        <p>Every feature is designed to reduce friction and surface what matters. No bloat, no configuration maze.</p>
-    </header>
+  <header class="hero-header">
+    <div class="badge-pill">Platform Features</div>
+    <h1>
+      <span>Built for <em>clarity</em></span>
+      <span>at every scale</span>
+    </h1>
+    <p>Every feature is designed to reduce friction and surface what matters. No bloat, no configuration maze.</p>
+  </header>
 
-    <section class="feature-row">
-        <div class="feature-text">
-            <span class="feature-tag">01 — Unified Dashboard</span>
-            <h2>Every metric, one calm surface</h2>
-            <p>Pull data from any source into a single, composable view. Share live dashboards with stakeholders — no exports, no screenshots.</p>
-            <ul class="feature-list">
-                <li>Drag-and-drop widget builder</li>
-                <li>Real-time data sync across all sources</li>
-                <li>Role-based sharing with granular permissions</li>
-            </ul>
-        </div>
-        <div class="feature-visual">
-            <div class="mockup-canvas">
-                <div class="grid-2">
-                    <div class="card">
-                        <div class="card-label">Monthly Revenue</div>
-                        <div class="card-value">$84.2k</div>
-                        <div class="card-progress"><div class="fill"></div></div>
-                    </div>
-                    <div class="card">
-                        <div class="card-label">Active Users</div>
-                        <div class="card-value">12,481</div>
-                        <div class="card-progress"><div class="fill" style="width: 85%;"></div></div>
-                    </div>
-                </div>
-                <div class="list-card">
-                    <div class="list-card-title">Recent Activity</div>
-                    <div class="list-item">
-                        <span>Q3 Report synced</span>
-                        <span class="status-tag done">Done</span>
-                    </div>
-                    <div class="list-item">
-                        <span>Team review pending</span>
-                        <span class="status-tag active">Active</span>
-                    </div>
-                </div>
+  <main class="feature-grid">
+    
+    <section class="row">
+      <div class="col-text">
+        <span class="meta-tag">01 — UNIFIED DASHBOARD</span>
+        <h2>Every metric, one calm surface</h2>
+        <p>Pull data from any source into a single, composable view. Share live dashboards with stakeholders — no exports, no screenshots.</p>
+        <ul class="checklist">
+          <li>Drag-and-drop widget builder</li>
+          <li>Real-time data sync across all sources</li>
+          <li>Role-based sharing with granular permissions</li>
+        </ul>
+      </div>
+      <div class="col-visual">
+        <div class="card">
+          <div class="split-metrics">
+            <div class="metric-box">
+              <label>Monthly Revenue</label>
+              <div class="num">$84.2k</div>
+              <div class="indicator-bar w-70"></div>
             </div>
+            <div class="metric-box">
+              <label>Active Users</label>
+              <div class="num">12,481</div>
+              <div class="indicator-bar w-45"></div>
+            </div>
+          </div>
+          <div class="list-caption">Recent Activity</div>
+          <div class="list-row"><span>Q3 Report synced</span><span class="pill done">Done</span></div>
+          <div class="list-row"><span>Team review pending</span><span class="pill active">Active</span></div>
+          <div class="list-row"><span>Analytics export</span><span class="pill queued">Queued</span></div>
         </div>
+      </div>
     </section>
 
-    <section class="feature-row reverse">
-        <div class="feature-text">
-            <span class="feature-tag">02 — Automation</span>
-            <h2>Routines that run themselves</h2>
-            <p>Build automation flows with natural language. Clearwave understands your intent and suggests the next step — no flowchart diagrams needed.</p>
-            <ul class="feature-list">
-                <li>Natural language automation builder</li>
-                <li>500+ pre-built trigger templates</li>
-                <li>Full audit trail for every action</li>
-            </ul>
-        </div>
-        <div class="feature-visual">
-            <div class="mockup-canvas">
-                <div class="list-card" style="margin-bottom: 16px;">
-                    <div class="list-item">
-                        <span>Weekly digest → Slack</span>
-                        <span class="status-tag done">Running</span>
-                    </div>
-                    <div class="list-item">
-                        <span>Lead scored → Notify sales</span>
-                        <span class="status-tag done">Running</span>
-                    </div>
-                    <div class="list-item">
-                        <span>Invoice due → Alert CFO</span>
-                        <span class="status-tag active">Active</span>
-                    </div>
-                    <div class="list-item">
-                        <span>Report sync → Drive</span>
-                        <span class="status-tag paused">Paused</span>
-                    </div>
-                </div>
-                <div class="grid-2">
-                    <div class="card">
-                        <div class="card-label">Hours Saved This Month</div>
-                        <div class="card-value">148h</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-label">Flows</div>
-                        <div class="card-value">24</div>
-                    </div>
-                </div>
+    <section class="row">
+      <div class="col-text">
+        <span class="meta-tag">02 — AUTOMATION</span>
+        <h2>Routines that run themselves</h2>
+        <p>Build automation flows with natural language. Clearwave understands your intent and suggests the next step — no flowchart diagrams needed.</p>
+        <ul class="checklist">
+          <li>Natural language automation builder</li>
+          <li>500+ pre-built trigger templates</li>
+          <li>Full audit trail for every action</li>
+        </ul>
+      </div>
+      <div class="col-visual">
+        <div class="card">
+          <div class="list-row"><span>Weekly digest → Slack</span><span class="pill done">Running</span></div>
+          <div class="list-row"><span>Lead scored → Notify sales</span><span class="pill done">Running</span></div>
+          <div class="list-row"><span>Invoice due → Alert CFO</span><span class="pill active">Active</span></div>
+          <div class="list-row"><span>Report sync → Drive</span><span class="pill paused">Paused</span></div>
+          <div class="split-metrics" style="margin-top: 1.5rem; margin-bottom: 0;">
+            <div class="metric-box">
+              <label>Hours Saved This Month</label>
+              <div class="num">148h</div>
             </div>
+            <div class="metric-box">
+              <label>Flows</label>
+              <div class="num">24</div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="feature-row">
-        <div class="feature-text">
-            <span class="feature-tag">03 — Team Collaboration</span>
-            <h2>Comments, context, and clarity</h2>
-            <p>Annotate anything, assign tasks inline, and resolve conversations without switching tabs. The work and the discussion stay together.</p>
-            <ul class="feature-list">
-                <li>Inline comments on any data point</li>
-                <li>Threaded task assignments</li>
-                <li>Real-time presence and live cursors</li>
-            </ul>
-        </div>
-        <div class="feature-visual">
-            <div class="mockup-canvas">
-                <div class="grid-2" style="margin-bottom: 16px;">
-                    <div class="card">
-                        <div class="card-label">Online Now</div>
-                        <div class="card-value" style="font-size: 1.1rem; display: flex; gap: 4px; margin-top: 4px;">
-                            <span style="background:#115335; color:white; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.6rem;">A</span>
-                            <span style="background:#2e7d32; color:white; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.6rem;">K</span>
-                            <span style="background:#1565c0; color:white; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.6rem;">M</span>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-label">Open Tasks</div>
-                        <div class="card-value">37</div>
-                    </div>
-                </div>
-                <div class="list-card">
-                    <div class="list-card-title">Recent Comments</div>
-                    <div class="list-item">
-                        <span>Alex → Q3 chart updated</span>
-                        <span class="status-tag done">Resolved</span>
-                    </div>
-                    <div class="list-item">
-                        <span>Kim → Review needed</span>
-                        <span class="status-tag open">Open</span>
-                    </div>
-                </div>
+    <section class="row">
+      <div class="col-text">
+        <span class="meta-tag">03 — TEAM COLLABORATION</span>
+        <h2>Comments, context, and clarity</h2>
+        <p>Annotate anything, assign tasks inline, and resolve conversations without switching tabs. The work and the discussion stay together.</p>
+        <ul class="checklist">
+          <li>Inline comments on any data point</li>
+          <li>Threaded task assignments</li>
+          <li>Real-time presence and live cursors</li>
+        </ul>
+      </div>
+      <div class="col-visual">
+        <div class="card">
+          <div class="split-metrics">
+            <div class="metric-box">
+              <label>Online now</label>
+              <div class="team-avatars">
+                <div class="user-dot" style="background:#f43f5e">AM</div>
+                <div class="user-dot" style="background:#0ea5e9">KL</div>
+                <div class="user-dot" style="background:#eab308">MR</div>
+                <div class="user-dot" style="background:#64748b">+5</div>
+              </div>
             </div>
+            <div class="metric-box">
+              <label>Open Tasks</label>
+              <div class="num">37</div>
+            </div>
+          </div>
+          <div class="list-caption">Recent Comments</div>
+          <div class="list-row"><span>Alex → Q3 chart updated</span><span class="pill done">Resolved</span></div>
+          <div class="list-row"><span>Kim → Review needed</span><span class="pill active">Open</span></div>
+          <div class="list-row"><span>Maya → Approved & shipped</span><span class="pill done">Done</span></div>
         </div>
+      </div>
     </section>
+  </main>
 
-    <footer class="stats-section">
-        <div class="stat-item">
-            <div class="stat-line"></div>
-            <div class="stat-number">17k+</div>
-            <div class="stat-label">Teams Worldwide</div>
-            <div class="stat-sub">Across 110+ countries</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-line"></div>
-            <div class="stat-number">11%</div>
-            <div class="stat-label">Avg. Productivity Gain</div>
-            <div class="stat-sub">Measured in first 30 days</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-line"></div>
-            <div class="stat-number">34.3%</div>
-            <div class="stat-label">Uptime SLA</div>
-            <div class="stat-sub">Guaranteed and monitored</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-line"></div>
-            <div class="stat-number">6h</div>
-            <div class="stat-label">Saved Per Team Weekly</div>
-            <div class="stat-sub">On average across all plans</div>
-        </div>
-    </footer>
+  <footer class="performance-footer">
+    <div class="stat-card">
+      <h3>17k+</h3>
+      <h4>Teams Worldwide</h4>
+      <p>Across 80+ countries</p>
+    </div>
+    <div class="stat-card">
+      <h3>11%</h3>
+      <h4>Avg. Productivity Gain</h4>
+      <p>Measured in first 30 days</p>
+    </div>
+    <div class="stat-card">
+      <h3>34.3%</h3>
+      <h4>Uptime SLA</h4>
+      <p>Guaranteed and monitored</p>
+    </div>
+    <div class="stat-card">
+      <h3>6h</h3>
+      <h4>Saved Per Team Weekly</h4>
+      <p>On average across all plans</p>
+    </div>
+  </footer>
 
 </div>
 
